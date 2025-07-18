@@ -1,102 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SupplyPoint Vault</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background-color: #2C3E50;
-      color: #2C3E50;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #1B2A38;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #E67E22;
-    }
-    section {
-      padding: 2rem 1.5rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    h2 {
-      color: #7B1FA2;
-      margin-top: 2rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    footer {
-      background-color: #2C3E50;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-    a {
-      color: #E67E22;
-    }
-    .highlight {
-      background-color: #E67E22;
-      color: white;
-      padding: 0.5rem 1rem;
-      display: inline-block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupplyPoint Vault - Privacy-first tracking app</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: #2C3E50;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Header Navigation */
+        .header {
+            background: rgba(27, 42, 56, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 500;
+            color: #FFFFFF;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 400;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #E67E22;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #1B2A38 0%, #2C3E50 100%);
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            background: #F8F9F9;
+            border-radius: 16px;
+            margin: 0 auto 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #2C3E50;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: 2px dashed #E67E22;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            color: #FFFFFF;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .hero .tagline {
+            font-size: 16px;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .privacy-note {
+            font-size: 12px;
+            color: #FFFFFF;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        /* Screenshot Section */
+        .screenshots {
+            padding: 80px 0;
+            background: #F8F9F9;
+        }
+
+        .screenshots h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 48px;
+            color: #2C3E50;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .screenshot-item {
+            text-align: center;
+            padding: 16px;
+            border-radius: 16px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            max-width: 250px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
+            background: #F8F9F9;
+            border: 2px solid #E67E22;
+            margin-bottom: 16px;
+        }
+
+        .screenshot-item h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+
+        .screenshot-item p {
+            color: #2C3E50;
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1B2A38, #2C3E50);
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .coming-soon h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 32px;
+        }
+
+        .play-store-badge {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #E67E22;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 8px rgba(230, 126, 34, 0.3);
+        }
+
+        .play-store-badge:hover {
+            background: #7B1FA2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(123, 31, 162, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1B2A38;
+            color: #FFFFFF;
+            padding: 48px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            background: #E67E22;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(230, 126, 34, 0.3);
+        }
+
+        .footer-contact {
+            text-align: center;
+        }
+
+        .footer-contact h3 {
+            margin-bottom: 8px;
+            color: #E67E22;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .footer-contact a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .footer-contact a:hover {
+            color: #E67E22;
+        }
+
+        .footer-links {
+            text-align: right;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #E67E22;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .subtitle {
+                font-size: 20px;
+            }
+
+            .hero .tagline {
+                font-size: 14px;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .footer-links {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .hero .tagline {
+                font-size: 14px;
+            }
+
+            .screenshots h2 {
+                font-size: 20px;
+            }
+
+            .coming-soon h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">SupplyPoint Vault</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#screenshots">Screenshots</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <header>
-    <h1>SupplyPoint Vault</h1>
-    <p>Privacy-first tracking app.</p>
-  </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <img src="SPA%20Icon.png" alt="SupplyPoint Vault Logo" style="height: 100px; margin-bottom: 1rem;">
+            <h1>SupplyPoint Vault</h1>
+            <p class="subtitle">Privacy-first tracking app</p>
+            <p class="tagline">Easily and securely track your firearms, ammunition, accessories, and range visits in a modern Android app.</p>
+            <p class="privacy-note">No personal info required. Your records stay private.</p>
+        </div>
+    </section>
 
-  <section>
-    <h2>📱 About the App</h2>
-    <p>SupplyPoint Vault is a secure Android app designed for responsible gun owners to manage:</p>
-    <ul>
-      <li>🔫 Firearms: make, model, serial, photos</li>
-      <li>🧱 Ammo: type, grain, cost per round</li>
-      <li>🎯 Range logs and accessory linking</li>
-      <li>📁 CSV exports and offline backups</li>
-    </ul>
+    <!-- Screenshot Section -->
+    <section class="screenshots" id="screenshots">
+        <div class="container">
+            <h2>App Preview</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="screenshot1.png" alt="Firearm List Screenshot">
+                    <h3>Firearm List</h3>
+                    <p>Organize and track your firearms with detailed specifications and custom notes.</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="screenshot2.png" alt="Ammo Inventory Screenshot">
+                    <h3>Ammo Inventory</h3>
+                    <p>Keep precise records of your ammunition stock with caliber, quantity, and purchase details.</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="screenshot3.png" alt="Range Day Log Screenshot">
+                    <h3>Range Day Log</h3>
+                    <p>Document your range visits, track performance, and log maintenance activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h2>🔐 Privacy Comes First</h2>
-    <p>We don’t collect your data. In fact, we can’t — it never leaves your device.</p>
-    <ul>
-      <li>No accounts</li>
-      <li>No servers</li>
-      <li>No analytics or tracking</li>
-    </ul>
-    <p><a href="./README.md#privacy-policy">View the full privacy policy</a></p>
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <h2>Coming soon to Google Play</h2>
+            <a href="#" class="play-store-badge">Get it on Google Play</a>
+        </div>
+    </section>
 
-    <h2>🧑‍💻 About the Creator</h2>
-    <p><em>“As someone once labeled a ‘super gun owner’ by the media, I needed a way to manage my growing inventory. This app started as a personal solution and evolved into something I wanted to share with the community.”</em></p>
-
-    <h2>📦 App Status</h2>
-    <p>SupplyPoint Vault is currently in development. A public release on the Google Play Store is planned for late 2025.</p>
-
-    <h2>📧 Contact</h2>
-    <p>Have questions or feedback? Email us at: <a href="mailto:questions@supplypointvault.com">questions@supplypointvault.com</a></p>
-  </section>
-
-  <footer>
-    &copy; 2025 SupplyPoint Vault — Built for privacy-conscious firearm owners
-  </footer>
-
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">📦</div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <a href="mailto:support@supplypointvault.com">support@supplypointvault.com</a>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#privacy-policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
