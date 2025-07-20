@@ -127,6 +127,7 @@
         }
 
         .screenshots h2 {
+            min-height: 600px;
             text-align: center;
             font-size: 24px;
             font-weight: bold;
@@ -139,15 +140,25 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
             margin-bottom: 32px;
+            align-items: stretch;
         }
 
+
         .screenshot-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             text-align: center;
+        
             padding: 16px;
             border-radius: 16px;
             background: #FFFFFF;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+            /* Force consistent height across all cards */
+            height: 600px; /* ← adjust as needed */
         }
 
         .screenshot-item:hover {
@@ -156,6 +167,17 @@
         }
 
         .screenshot-item img {
+            width: 100%;
+            max-width: 250px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
+            background: #F8F9F9;
+            border: 2px solid #E67E22;
+            margin-bottom: 16px;
+        }
+        
+        .screenshot-item video {
             width: 100%;
             max-width: 250px;
             height: 450px;
@@ -382,7 +404,7 @@
             <h2>App Preview</h2>
             <div class="screenshot-grid">
                 <div class="screenshot-item">
-                    <img src="screenshot1.png" alt="Firearm List Screenshot">
+                    <img src="screenshots/coming_soon.png" alt="Firearm List Screenshot">
                     <h3>Firearm List</h3>
                     <p>Organize and track your firearms with detailed specifications and custom notes.</p>
                 </div>
@@ -395,7 +417,7 @@
                     <p>Keep precise records of your ammunition stock with caliber, quantity, and purchase details.</p>
                 </div>
                 <div class="screenshot-item">
-                    <img src="screenshot3.png" alt="Range Day Log Screenshot">
+                    <img src="screenshots/coming_soon.png" alt="Range Day Log Screenshot">
                     <h3>Range Day Log</h3>
                     <p>Document your range visits, track performance, and log maintenance activities.</p>
                 </div>
