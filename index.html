@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,12 +123,12 @@
 
         /* Screenshot Section */
         .screenshots {
-            padding: 80px 0;
+            padding: 12px 0;
             background: #F8F9F9;
         }
 
         .screenshots h2 {
-            min-height: 600px;
+            min-height: 0px;
             text-align: center;
             font-size: 24px;
             font-weight: bold;
@@ -150,15 +151,16 @@
             justify-content: flex-start;
             align-items: center;
             text-align: center;
-        
+
             padding: 16px;
             border-radius: 16px;
-            background: #FFFFFF;
+            background: #2C3E50;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-        
+
             /* Force consistent height across all cards */
-            height: 600px; /* ← adjust as needed */
+            height: 600px;
+            /* ← adjust as needed */
         }
 
         .screenshot-item:hover {
@@ -176,7 +178,7 @@
             border: 2px solid #E67E22;
             margin-bottom: 16px;
         }
-        
+
         .screenshot-item video {
             width: 100%;
             max-width: 250px;
@@ -191,12 +193,12 @@
         .screenshot-item h3 {
             font-size: 18px;
             font-weight: 500;
-            color: #2C3E50;
+            color: #E67E22;
             margin-bottom: 8px;
         }
 
         .screenshot-item p {
-            color: #2C3E50;
+            color: #F8F9F9;
             font-size: 14px;
             font-weight: 400;
             opacity: 0.7;
@@ -372,6 +374,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -395,6 +398,60 @@
             <p class="subtitle">Privacy-first tracking app</p>
             <p class="tagline">Easily and securely track your firearms, ammunition, accessories, and range visits in a modern Android app.</p>
             <p class="privacy-note">No personal info required. Your records stay private.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features" style="background: #F8F9F9; padding: 80px 0;">
+        <div class="container">
+            <h2 style="text-align: center; color: #2C3E50; font-size: 28px; font-weight: bold; margin-bottom: 48px;">
+                Key Features
+            </h2>
+            <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+    
+                <div class="feature-item" style="background: #2C3E50; padding: 24px; border-radius: 16px; text-align: center;">
+                    <h3 style="color: #E67E22; font-size: 18px; margin-bottom: 12px;">Firearm Tracking</h3>
+                    <p style="color: #F8F9F9; font-size: 14px; opacity: 0.85;">
+                        Log make, model, action, caliber, serial, purchase/sale info, and photos — all stored securely offline.
+                    </p>
+                </div>
+    
+                <div class="feature-item" style="background: #2C3E50; padding: 24px; border-radius: 16px; text-align: center;">
+                    <h3 style="color: #E67E22; font-size: 18px; margin-bottom: 12px;">Ammo Inventory</h3>
+                    <p style="color: #F8F9F9; font-size: 14px; opacity: 0.85;">
+                        Track round counts, caliber, type, velocity, grain, and purchase history with per-round cost.
+                    </p>
+                </div>
+    
+                <div class="feature-item" style="background: #2C3E50; padding: 24px; border-radius: 16px; text-align: center;">
+                    <h3 style="color: #E67E22; font-size: 18px; margin-bottom: 12px;">Accessories</h3>
+                    <p style="color: #F8F9F9; font-size: 14px; opacity: 0.85;">
+                        Manage scopes, lights, slings, and gear — with ability to link them to specific firearms.
+                    </p>
+                </div>
+    
+                <div class="feature-item" style="background: #2C3E50; padding: 24px; border-radius: 16px; text-align: center;">
+                    <h3 style="color: #E67E22; font-size: 18px; margin-bottom: 12px;">Range Logs</h3>
+                    <p style="color: #F8F9F9; font-size: 14px; opacity: 0.85;">
+                        Log range days, firearms used, ammo spent, targets hit, and notes for performance tracking.
+                    </p>
+                </div>
+    
+                <div class="feature-item" style="background: #2C3E50; padding: 24px; border-radius: 16px; text-align: center;">
+                    <h3 style="color: #E67E22; font-size: 18px; margin-bottom: 12px;">Privacy-First</h3>
+                    <p style="color: #F8F9F9; font-size: 14px; opacity: 0.85;">
+                        No cloud storage, no accounts — all data lives locally on your device. You're in control.
+                    </p>
+                </div>
+    
+                <div class="feature-item" style="background: #2C3E50; padding: 24px; border-radius: 16px; text-align: center;">
+                    <h3 style="color: #E67E22; font-size: 18px; margin-bottom: 12px;">Backup & Export</h3>
+                    <p style="color: #F8F9F9; font-size: 14px; opacity: 0.85;">
+                        Export to CSV, back up locally, or restore from file — flexible tools for peace of mind.
+                    </p>
+                </div>
+    
+            </div>
         </div>
     </section>
 
@@ -440,7 +497,7 @@
                 <img src="images/logo_white_color.png" alt="SupplyPoint Vault Logo" style="height: 100px; margin-bottom: 1rem;">
                 <div class="footer-contact">
                     <h3>Contact</h3>
-                    <a href="mailto:support@supplypointvault.com">support@supplypointvault.com</a>
+                    <a href="mailto:questions@supplypointvault.com">questions@supplypointvault.com</a>
                 </div>
                 <div class="footer-links">
                     <ul>
@@ -453,4 +510,5 @@
         </div>
     </footer>
 </body>
+
 </html>
